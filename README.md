@@ -43,4 +43,16 @@
 
 - Dentro do Beekeper criamos o primeiro banco
     - devdonald
-    
+
+# 6º - SQL/Sequelize = linguagem utilizada para lider com o banco de dados relacional (baseado em tabelas)
+- Instalar o Sequelize:
+    yarn add sequelize pg pg-hstore
+
+- Instalar o Sequelize-cli para ajudar usar o sequelize, como desenvolvimento:
+    yarn add -D sequelize-cli
+
+- Criar na raiz do projeto o arquivo '.sequelizerc' e configurar...
+
+- e no arquivo 'database.js' em 'config' configuramos tambem...
+
+# 
