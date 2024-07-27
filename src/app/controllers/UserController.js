@@ -8,7 +8,7 @@ class UserController {
         const schema = Yup.object({
             name: Yup.string().required(),          // required() = OBRIGATÓRIO o campo
             email: Yup.string().email().required(),
-            password_hash: Yup.string().required().min(6), // Alem de obrigatório, tem um minimo de 6 digitos obritorios pra senha
+            password: Yup.string().required().min(6), // Alem de obrigatório, tem um minimo de 6 digitos obritorios pra senha
             admin: Yup.boolean(),
         })
 
@@ -19,7 +19,7 @@ class UserController {
             return res.status(400).json({ error: err.errors })
         }
 
-        const { name, email, password_hash, admin } = req.body
+        const { name, email, password, admin } = req.body
 
         // Encontrando no banco de dados se tem algum email duplicado
         const userExists = await User.findOne({
@@ -34,7 +34,7 @@ class UserController {
             id: v4(),
             name,
             email,
-            password_hash,
+            password,
             admin
         })
 

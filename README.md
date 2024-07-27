@@ -105,3 +105,16 @@
 
 # 12º - Validando email Duplicado
 - Configurar no nosos 'UserController' se já existe um usuário criado com o mesmo email, não permitindo quebrar a aplicação
+
+# 13º - Criando Hash de senha usando a Biblioteca Bcrypt = Criptografia
+- Estamos até o momento salvando os dados de senha como : password_hash, e não é a melhor forma segura pro o usuário,
+Então vamos crirar um Hash de senha.
+
+- Vamos instalar o Bcrypt
+    yarn add bcrypt
+
+- E fazemos essa criptografia no 'models' / 'User.js'
+
+- E alteramos na aplicação o 'password_hash' para apenas 'password'
+
+#
