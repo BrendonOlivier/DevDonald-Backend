@@ -126,4 +126,9 @@ Então vamos crirar um Hash de senha.
 - Testamos a rota usando o HTTPIE
     com o GET no caso
 
-- 
+# 15º - Migration de Produtos
+- Criar nossa migration de produtos
+    yarn sequelize migration:create --name create-products-table
+
+- E rodamos a migrate
+    yarn sequelize db:migrate
