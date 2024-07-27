@@ -69,4 +69,23 @@
     yarn sequelize db:migrate:undo:all
 
 # 8º - Primeiro Model - Usuários
-- 
+- Criando o primeiro Model
+    criamos o arquivo 'User.js' na pasta 'model' e configuramos...
+
+# 9º - Configuração do Model de Usuário e Instalando o UUID
+- Configurar a conexão do model com o banco de dados
+    no arquivo 'index.js' da pasta 'database' vamos configurar a conexão
+
+- Configurado a conexão com o banco, importamos ela no nosso 'app.js'
+    import './database'
+
+- Instalar o UUID
+    yarn add uuid
+
+- Usar nas nossas rotas pra testar a conexão, mandando um id aleatório com o UUID
+    id: v4(),
+    name: 'Brendon',
+    email: "brendon@email.com",
+    password_hash: '123456'
+
+# 
