@@ -132,3 +132,12 @@ Então vamos crirar um Hash de senha.
 
 - E rodamos a migrate
     yarn sequelize db:migrate
+
+# 16º - Criando Controller de Produtos
+- Criamos o arquivo 'ProductController.js'
+
+- Depois criamos nossa rota de criação de produto
+    routes.post('/products', ProductController.store)
+
+- E testamos no HTTPIE
+    no método POST
