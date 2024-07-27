@@ -93,3 +93,14 @@
     na pasta 'controllers' criamos o arquivo 'UserController.js'
 
 - Para simular nosso 'Frontend' vou utilizar o HTTPie
+
+# 11º - Validando dados com o Yup - Biblioteca pra validar dados
+- Instalar o Yup
+    yarn add yup
+
+- Vamos utiliza-lo no 'UserController'
+    import * as Yup from 'yup'
+
+- E criar uma validação de erros pra não quebrar o código
+
+# 12º - 
