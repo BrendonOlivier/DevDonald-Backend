@@ -103,4 +103,5 @@
 
 - E criar uma validação de erros pra não quebrar o código
 
-# 12º - 
+# 12º - Validando email Duplicado
+- Configurar no nosos 'UserController' se já existe um usuário criado com o mesmo email, não permitindo quebrar a aplicação

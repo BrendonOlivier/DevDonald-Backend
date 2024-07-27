@@ -12,14 +12,23 @@ class UserController {
             admin: Yup.boolean(),
         })
 
-         // Aqui iremos mandar um erro, caso tenha algo incorreto no cadastro
-         try {
+        // Aqui iremos mandar um erro, caso tenha algo incorreto no cadastro
+        try {
             await schema.validateSync(req.body, { abortEarly: false })
         } catch (err) {
             return res.status(400).json({ error: err.errors })
         }
 
         const { name, email, password_hash, admin } = req.body
+
+        // Encontrando no banco de dados se tem algum email duplicado
+        const userExists = await User.findOne({
+            where: { email },
+        })
+
+        if(userExists){
+            return res.status(400).json({error: 'Usuário com o mesmo email já criado ❌'})
+        }
 
         const user = await User.create({
             id: v4(),
