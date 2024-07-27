@@ -88,4 +88,8 @@
     email: "brendon@email.com",
     password_hash: '123456'
 
-# 
+# 10º - Criando Controller de Usuário
+- Criar nosso primeiro Controller
+    na pasta 'controllers' criamos o arquivo 'UserController.js'
+
+- Para simular nosso 'Frontend' vou utilizar o HTTPie
