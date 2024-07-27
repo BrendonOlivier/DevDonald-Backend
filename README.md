@@ -29,3 +29,18 @@
 
 - Configurar o eslint
     yarn eslint --init
+
+# 4º - Padrão de Arquitetura MVC - Model , View , Controller
+
+# 5º - Docker + PostgresSQL = Banco de dados para persistir nossos dados
+- Criar nosso primeiro Container
+    docker run --name devdonald-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+    para verificar se deu tudo certo damos o comando : docker ps
+
+- Para visualizarmos a interface usando o Beekeper Studio
+    user: postgres
+    password: postgres
+
+- Dentro do Beekeper criamos o primeiro banco
+    - devdonald
+    
