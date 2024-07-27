@@ -55,7 +55,7 @@
 
 - e no arquivo 'database.js' em 'config' configuramos tambem...
 
-# 7º - Primeira Migration
+# 7º - Primeira Migration - Usuários
 - Criando a primeira Migration
     yarn sequelize migration:create --name create-users-table
     e configuramos...
@@ -68,4 +68,5 @@
                 //
     yarn sequelize db:migrate:undo:all
 
-# 
+# 8º - Primeiro Model - Usuários
+- 
