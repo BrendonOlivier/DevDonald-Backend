@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import * as Yup from 'yup'
+import * as Yup from 'yup' // Estou pegando tudo ( * ) que da biblioteca yup e chamando de ' Yup '
 
 import User from '../models/User'
 

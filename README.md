@@ -117,4 +117,13 @@ Então vamos crirar um Hash de senha.
 
 - E alteramos na aplicação o 'password_hash' para apenas 'password'
 
-#
+# 14ª - Controller login de usuário
+- Criamos o arquivo SessionController
+
+- Criar a nossa rota de login
+    routes.post('/session', SessionController.store)
+
+- Testamos a rota usando o HTTPIE
+    com o GET no caso
+
+- 
