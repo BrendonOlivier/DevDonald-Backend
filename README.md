@@ -22,3 +22,10 @@
 
 - Depois damos o comando:
     yarn sucrase-node src/server.js
+
+# 3º - Eslint + Prettier
+- Instalar o eslint como desenvolvimento
+    yarn add eslint -D
+
+- Configurar o eslint
+    yarn eslint --init
