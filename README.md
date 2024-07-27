@@ -55,4 +55,17 @@
 
 - e no arquivo 'database.js' em 'config' configuramos tambem...
 
+# 7º - Primeira Migration
+- Criando a primeira Migration
+    yarn sequelize migration:create --name create-users-table
+    e configuramos...
+
+- Rodando a Migration
+    yarn sequelize db:migrate
+
+- Caso dê algum erro, para desfazer a migration usamos o ' ':undo' desfaz a ultima migrate criada, e o ':undo:all' desfaz tudo
+    yarn sequelize db:migrate:undo
+                //
+    yarn sequelize db:migrate:undo:all
+
 # 
