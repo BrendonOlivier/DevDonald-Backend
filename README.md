@@ -175,4 +175,32 @@ Então vamos crirar um Hash de senha.
 
 - E se tudo der certo, a imagem vai ser criado na pasta 'uploads'
 
+# 18 - Model de Products - Pra conseguirmos visualizar no banco de dados
+- Criamos o arquivo 'Product.js'
+    e configuramos o model
+
+- Importamos nosso model de product no 'index.js' dentro do 'database'
+    import Product from '../app/models/Product'
+
+- E passamos junto ao array de mapeamento :
+    const models = [User, Product]
+
+- Vamos agora salvar os dados no banco de dados no nosso controller de products
+
+- Após criar o produto no banco de dados, precisamos expor tambem a imagem, por isso vamos criar um campo virtual
+    no model de 'Product.js' criamos o campo virtual de url:
+    url: { type: Sequelize.VIRTUAL,}
+
+- Depois vamos criar um método 'get' para ver esses dados:
+    routes.get('/products', ProductController.index)
+
+- No ProductController criamos esse método index :
+
+- No HTTPIE testamos essa rota de GET
+
+- Para conseguirmos visualizar a URL direto no navegador, precisamos usar o middleware
+    configuramos um novo middleware no nosso 'app.js'
+    this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads')))
+    feito isso podemos visualizar url direto no navegador.
+
 #
