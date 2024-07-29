@@ -141,3 +141,38 @@ Então vamos crirar um Hash de senha.
 
 - E testamos no HTTPIE
     no método POST
+
+# 17º - Upload de imagens com Multer
+- Para fazer upload de imagens iremos utilizar a biblioteca Multer, instalmos
+    yarn add multer
+
+- Criamos na pasta 'config' o arquivo
+    'multer.js'
+
+- Na raiz do projeto criar, uma pasta 
+    'uploads'
+
+- E vamos configurar o Multer
+
+- Depois nas nossas rotas, importamos o multer
+    import multer from 'multer'
+
+- E tambem a nossa configuração do Multer
+    import multerConfig from './config/multer'
+
+- Montamos a variavel do multer
+    const upload = multer(multerConfig)
+
+- E passamos para as rotas que queremos fazer upload, exemplo na rota de criar um produto : 
+    routes.post('/products', upload.single('file'), ProductController.store)
+
+- Para testar, no HTTPIE usamos a opção 'form' e ativamos o 'Multipart' e mandamos os dados, exemplo :
+    Dados     -     Value
+    name            X-Bacon
+    price           32
+    category        Hambúrgueres
+    file            hamburguer.jpg  
+
+- E se tudo der certo, a imagem vai ser criado na pasta 'uploads'
+
+#
