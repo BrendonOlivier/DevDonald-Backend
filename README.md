@@ -394,4 +394,28 @@ Então vamos crirar um Hash de senha.
 
 - E por fim testamos tudo no nosso HTTPIE
 
+# 31º - Update do Produto
+- Vamos adicionar uma coluna de 'Ofertas' na nossa Tabela de Products usando as Migrates
+    yarn sequelize migration:create --name add-offer-column
+
+- E rodamos a Migrate
+    yarn sequelize db:migrate
+
+- Agora adicionamos essa informação no nosso Model de Produtos
+    offer: Sequelize.BOOLEAN
+
+- E alterar as mudanças no Controller de Produtos
+    offer: Yup.boolean()
+
+- Criamos um produto para teste no HTTPIE passando o 
+    'offer' - true ou false
+
+- Agora queremos Editar essas informações, para isso vamos criar um método de Update (PUT) para atualizarmos um produto...
+
+- Criamos a rota (PUT) de update de produtos
+    routes.put('/products/:id', upload.single('file'), ProductController.update)
+
+- E por fim testamos no nosso HTTPIE passando o ID do produto que queremos alterar, exemplo:
+    {{BASE_URL}}/products/1
+
 #
