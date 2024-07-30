@@ -203,4 +203,40 @@ Então vamos crirar um Hash de senha.
     this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads')))
     feito isso podemos visualizar url direto no navegador.
 
-#
+# JWT - Biblioteca de Autenticação de Token
+- Primeiro instalamos o web token
+    yarn add jsonwebtoken
+
+- Usaremos ele no nosso 'SessionController' que é o nosso LOGIN onde realmente precisamos autenticar o usuário
+
+- Usaremos o site 'MD5 Hash generator' para gerar uma senha aleatória pra por no token
+    estou colocando um tempo de 5 dias de expiração pro token
+
+- Testamos no HTTPIE fazer o login ver se vai gerar o token
+
+- Criamos um arquivo na pasta 'config'
+    auth.js
+
+- Importamos o auth.js na nossa Session
+    import authConfig from '../../config/auth'
+    e passamos a config pros token
+
+- Vamos agora passar o token de autenticação no HTTPIE :
+    criamos um campo em Headers (get-list all products) Authorization
+    e no 'Value' passamos   -   Bearer (o token)
+
+- Após feito isso no HTTPIE, vamos criar uma pasta no 'src' 
+    'middlewares' e o arquivo 'auth.js'
+    e configuramos...
+
+- Depois importamos ele nas nossas rotas :
+    import authMiddleware from './middlewares/auth'
+
+- Passamos nas rotas que queremos utilizar, no caso :
+    routes.get('/products', authMiddleware, ProductController.index)
+
+- Para facilitar de um novo token ser atualizado, vamos passar no HTTPIE o token no campo 'Auth' na opção 'Bearer token'
+
+- Após configurar o auth de middlewares, vamos deixar todas nossas rotas Autenticadas :
+    routes.use(authMiddleware)
+    assim todas as rotas que estiverem abaixo, estarão sendo autenticadas

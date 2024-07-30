@@ -1,5 +1,7 @@
 import * as Yup from 'yup' // Estou pegando tudo ( * ) que da biblioteca yup e chamando de ' Yup '
 import User from '../models/User';
+import jwt from 'jsonwebtoken' // JWT - Web Token
+import authConfig from '../../config/auth' // Config do Token
 
 class SessionController {
     async store(req, res) {
@@ -40,7 +42,11 @@ class SessionController {
             id: user.id,
             name: user.name,
             email,
-            admin: user.admin
+            admin: user.admin,
+            token: jwt.sign({ id: user.id}, authConfig.secret, {
+                expiresIn: authConfig.expiresIn,
+
+            })
         })
     }
 }
