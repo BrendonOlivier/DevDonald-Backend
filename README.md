@@ -289,4 +289,12 @@ Então vamos crirar um Hash de senha.
 
 - E feito isso testamos se deu certo no banco de dados (Beekeeper)
 
+# 23º - Criando relacionamento entre tabelas
+- No nosso 'model' de Products, vamos criar esse relacionamento de Products com Category
+    Apagamos a linha 'category: Sequelize.STRING,' pois não existe mais no nosso banco
+    e criamos o método static...
+
+- Vamos iniciar essa conexão de relacionamento no nosso 
+    'database' + 'index.js'
+
 # 

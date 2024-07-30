@@ -7,7 +7,6 @@ class Product extends Model {
         super.init({
             name: Sequelize.STRING,
             price: Sequelize.INTEGER,
-            category: Sequelize.STRING,
             path: Sequelize.STRING,
             url: {
                 type: Sequelize.VIRTUAL,
@@ -19,7 +18,14 @@ class Product extends Model {
             {
                 sequelize
             }
-        )
+        );
+
+        return this;
+    }
+
+    // Criando uma referência no nosso model, nosso campo category_id é uma chave estrangeira e estamos dando um apelido a ela
+    static associate(models) {
+        this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'category', })
     }
 }
 
