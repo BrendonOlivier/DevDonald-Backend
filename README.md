@@ -365,4 +365,20 @@ Então vamos crirar um Hash de senha.
     Se a url da aplicação for a padrão do Mongo : mongodb://localhost:27017
     só clicarmos em connect
 
-# 
+# 29º - Atualizando Status do Pedido
+- Para fazer a atualização de status, criamos o método 'index' no nosso 'OrderController'
+
+- Primeiro criamos nossa rota GET para listar todos os pedidos
+    routes.get('/orders', OrderController.index)
+
+- Para saber qual pedidos queremos alterar precisamos pegar pelo ID na rota PUT
+
+- Depois criamos nosso método 'update' para fazermos a atualização do Status do pedido
+
+- Criamos a rota de update (PUT)
+    routes.put('/orders/:id', OrderController.update)
+
+- E por fim vamos validar se o ID existe, pois senão irá quebrar a aplicação
+    Utilizando o 'try + catch'
+
+#

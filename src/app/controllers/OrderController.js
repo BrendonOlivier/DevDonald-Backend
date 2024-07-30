@@ -72,7 +72,41 @@ class OrderController {
         const createdOrder = await Order.create(order);
 
         return res.status(201).json(createdOrder);
-    };
+    }
+
+    // Método index para pegar os pedidos do banco (GET)
+    async index(req, res) {
+        const orders = await Order.find();
+
+        return res.json(orders)
+    }
+
+    // Método update para atualizar/mudar o Status do pedo (PUT)
+    async update(req, res) {
+        const schema = Yup.object({
+            status: Yup.string().required()
+        });
+
+        // Aqui iremos mandar um erro, caso tenha algo errado
+        try {
+            await schema.validateSync(req.body, { abortEarly: false })
+        } catch (err) {
+            return res.status(400).json({ error: err.errors })
+        }
+
+        // Verificando qual é o pedido que iremos atualizar no caso pelo ID
+        const { id } = req.params;
+        const { status } = req.body;
+
+        // Procuro o pedido pelo  ID e mudo o Status, e caso o ID não existir mostro o erro
+        try {
+            await Order.updateOne({ _id: id }, { status })
+        } catch (err) {
+            return res.status(400).json({ error: err.message })
+        }
+
+        return res.json({ message: 'Status alterado com sucesso ✅' })
+    }
 };
 
 export default new OrderController();
