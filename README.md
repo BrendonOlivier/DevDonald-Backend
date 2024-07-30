@@ -311,4 +311,26 @@ Então vamos crirar um Hash de senha.
     include: [ { model: Category, as: 'category', attributes: ['id', 'name'] }]
         desse jeito vamos ter a qual Categoria é daquele produto.
 
-# 25º - 
+# 25º - MongoDB - Bancos NoSQL - Banco não relacional
+- Vamos criar a conexão com o MongoDB, irei utilizer o docker para isso
+
+- Primeiro criamos o container
+    docker run --name devdonald-mongo -p 27017:27017 -d -t mongo
+
+- Para verificar se está rodando podemos usar o :
+    docker ps
+        ou 
+    ir no próprio docker-desktop
+
+- O Sequelize não conecta no MongoDB, por isso vamos criar outra conexão no nosso
+    'database' + 'index.js'
+
+- E quem vai ajudar a trabalhar com o MongoDB é o Mongoose
+    primeiro instalamos :
+        yarn add mongoose
+
+- Importamos o mongoose no 'index.js'
+    import mongoose from 'mongoose';
+
+- E fazemos a conexão com o banco :
+    mongo() { this.mongoConnection = mongoose.connect('mongodb://localhost:27017/devdonald') }
