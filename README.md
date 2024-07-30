@@ -175,7 +175,7 @@ Então vamos crirar um Hash de senha.
 
 - E se tudo der certo, a imagem vai ser criado na pasta 'uploads'
 
-# 18 - Model de Products - Pra conseguirmos visualizar no banco de dados
+# 18º - Model de Products - Pra conseguirmos visualizar no banco de dados
 - Criamos o arquivo 'Product.js'
     e configuramos o model
 
@@ -203,7 +203,7 @@ Então vamos crirar um Hash de senha.
     this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads')))
     feito isso podemos visualizar url direto no navegador.
 
-# 19 - JWT - Biblioteca de Autenticação de Token
+# 19º - JWT - Biblioteca de Autenticação de Token
 - Primeiro instalamos o web token
     yarn add jsonwebtoken
 
@@ -241,7 +241,7 @@ Então vamos crirar um Hash de senha.
     routes.use(authMiddleware)
     assim todas as rotas que estiverem abaixo, estarão sendo autenticadas
 
-# 20 - Criando tabela de categorias
+# 20º - Criando tabela de categorias
 - Vamos criar a tabela de categorias 
     yarn sequelize migration:create --name create-categories-table
 
@@ -265,5 +265,28 @@ Então vamos crirar um Hash de senha.
     routes.get('/categories', CategoryController.index)
 
 - Agora testar se tudo deu certo no HTTPIE...
+
+# 21º - Validando categoria repetida
+- Por uma validação no nosso controller de categorias para não criar categorias repetidas
+    
+# 22º - Criando e excluindo campos de uma tabela
+- Iremos excluir o campo 'category' da tabela de 'products' para substituir pelo campo 'category_id'
+    para isso precisamos criar uma outra migartion que faça a função desejada
+
+- Primeiro vamos criar a migration de remover o campo da tabela
+    yarn sequelize migration:create --name remove-categories-column
+
+- E rodamos a migrate
+    yarn sequelize db:migrate
+        com isso o campo de 'category' foi removido do banco de dados a tabela de products
+
+- Agora criar a migration de crirar um campo em uma tabela
+    yarn sequelize migration:create --name add-category-id-column
+
+- E rodamos a migrate
+    yarn sequelize db:migrate
+        com isso o campo de 'category_id' foi criado no banco de dados da tabela de products
+
+- E feito isso testamos se deu certo no banco de dados (Beekeeper)
 
 # 
