@@ -203,7 +203,7 @@ Então vamos crirar um Hash de senha.
     this.app.use('/product-file', express.static(resolve(__dirname, '..', 'uploads')))
     feito isso podemos visualizar url direto no navegador.
 
-# JWT - Biblioteca de Autenticação de Token
+# 19 - JWT - Biblioteca de Autenticação de Token
 - Primeiro instalamos o web token
     yarn add jsonwebtoken
 
@@ -240,3 +240,30 @@ Então vamos crirar um Hash de senha.
 - Após configurar o auth de middlewares, vamos deixar todas nossas rotas Autenticadas :
     routes.use(authMiddleware)
     assim todas as rotas que estiverem abaixo, estarão sendo autenticadas
+
+# 20 - Criando tabela de categorias
+- Vamos criar a tabela de categorias 
+    yarn sequelize migration:create --name create-categories-table
+
+- Rodamos a migration
+    yarn sequelize db:migrate
+
+- Criar e configurar a Model de produtos
+    'models' + 'Category.js'
+
+- Importar a model de categoria no nosso index
+    'database' + 'index.js'
+        import Category from '../app/models/Category'
+    e passar pros nosso models
+        const models = [User, Product, Category]
+
+- Criar e configurar nosso controller de categorias
+    'controllers' + 'CategoryController.js'
+
+- Criar nossa rota de categorias
+    routes.post('/categories', CategoryController.store)
+    routes.get('/categories', CategoryController.index)
+
+- Agora testar se tudo deu certo no HTTPIE...
+
+# 
