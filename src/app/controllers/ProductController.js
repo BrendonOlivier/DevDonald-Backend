@@ -1,6 +1,7 @@
 import * as Yup from 'yup'; // Estou pegando tudo ( * ) que da biblioteca yup e chamando de ' Yup '
 import Product from '../models/Product';
 import Category from '../models/Category';
+import User from '../models/User';
 
 class ProductController {
     // Criando os produtos
@@ -17,6 +18,12 @@ class ProductController {
         } catch (err) {
             return res.status(400).json({ error: err.errors })
         }
+
+        // Verificação se o usuário é um Admin, procurando pelo ID do usuário
+        const { admin: isAdmin } = await User.findByPk(req.userId)
+        if(!isAdmin) {
+            return res.status(401).json();
+        };
 
         // Pegando os dados
         const { filename: path } = req.file;

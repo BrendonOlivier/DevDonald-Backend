@@ -2,6 +2,7 @@ import * as Yup from 'yup'; // Estou pegando tudo ( * ) que da biblioteca yup e 
 import Order from '../schemas/Order';
 import Product from '../models/Product';
 import Category from '../models/Category';
+import User from '../models/User';
 
 class OrderController {
     // Criando a ordem de serviço
@@ -93,6 +94,12 @@ class OrderController {
         } catch (err) {
             return res.status(400).json({ error: err.errors })
         }
+
+        // Verificação se o usuário é um Admin, procurando pelo ID do usuário
+        const { admin: isAdmin } = await User.findByPk(req.userId)
+        if(!isAdmin) {
+            return res.status(401).json();
+        };
 
         // Verificando qual é o pedido que iremos atualizar no caso pelo ID
         const { id } = req.params;

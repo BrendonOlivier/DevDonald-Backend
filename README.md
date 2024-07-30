@@ -381,4 +381,17 @@ Então vamos crirar um Hash de senha.
 - E por fim vamos validar se o ID existe, pois senão irá quebrar a aplicação
     Utilizando o 'try + catch'
 
+# 30º - Validando usuário Admin
+- Uma forma de segurança para nossa aplicação é saber se o usuário é um administrador para poder alterar algo do nosso código :
+    pois só um admin vai poder, listar pedidos, alterar, excluir, etc...
+
+- Começando pelas categorias, para criar, alterar, etc, o usuário precisar ser um admin
+    no nosso 'CategoryController' iremos fazer a validação
+
+- Pois agora só copiar a validação e por em todas as rotas que eu precisar saber se o usuário é um Admin :
+    Atualizar Pedido (PUT)
+    Criar Produto (POST)
+
+- E por fim testamos tudo no nosso HTTPIE
+
 #
