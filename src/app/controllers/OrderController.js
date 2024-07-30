@@ -58,16 +58,20 @@ class OrderController {
             return newProduct;
         });
 
-        // Pegando os dados do Usuário
+        // Pegando os dados do pedido do Usuário e salvando no banco
         const order = {
             user: {
                 id: req.userId,
                 name: req.userName
             },
-            products: formattedProducts
+            products: formattedProducts,
+            status: 'Pedido realizado'
         };
 
-        return res.status(201).json(order);
+        //Criar os dados no banco de dados (MongoDB)
+        const createdOrder = await Order.create(order);
+
+        return res.status(201).json(createdOrder);
     };
 };
 

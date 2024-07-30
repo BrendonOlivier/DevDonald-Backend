@@ -356,3 +356,13 @@ Então vamos crirar um Hash de senha.
 - E testamos a chamada na nossa rota pra ver se vem o name.
 
 - Com tudo funcionando, vamos configurar no nosso controller de order para buscar os dados do Banco de dados
+
+# 28º - Gravando pedidos no MongoDB
+- Pegando todos os dados necessário do pedido do usuário no nosso controller, vamos então salvar os dados no Mongo
+    const createdOrder = await Order.create(order);
+
+- Para conseguir visualizar os dados gravados no banco do MongoDB vamos usar o 'MongoDB Compass' Desktop
+    Se a url da aplicação for a padrão do Mongo : mongodb://localhost:27017
+    só clicarmos em connect
+
+# 
