@@ -18,12 +18,23 @@ class CategoryController {
         // Pegando os dados
         const { name } = req.body;
 
+        // Validação para não criar categorias repetidas
+        const categoryExists = await Category.findOne({
+            where: {
+                name
+            },
+        });
+
+        if (categoryExists) {
+            return res.status(400).json({ error: 'Categoria já criada 🛑' })
+        }
+
         // Criando no banco de dados o Produto
-        const category = await Category.create({
+        const { id } = await Category.create({
             name
         });
 
-        return res.status(201).json(category);
+        return res.status(201).json({ id, name });
     };
 
     // Listar todos as nossas categorias
