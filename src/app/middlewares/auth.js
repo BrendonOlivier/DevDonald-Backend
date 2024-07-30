@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import jwt from 'jsonwebtoken'
-import authConfig from '../config/auth'
+import authConfig from '../../config/auth'
 
 // O next dá continuidade para a aplicação
 function authMiddleware(req, res, next) {

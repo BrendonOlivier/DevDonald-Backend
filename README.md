@@ -334,3 +334,13 @@ Então vamos crirar um Hash de senha.
 
 - E fazemos a conexão com o banco :
     mongo() { this.mongoConnection = mongoose.connect('mongodb://localhost:27017/devdonald') }
+
+# 26º - Criando Scheme de pedidos
+- Criar a estrutura do nosso pedido, na pasta 'app' criamos a pasta
+    'schemas'
+    e o arquivo
+        'Order.js'
+
+- E configuramos...
+
+#
