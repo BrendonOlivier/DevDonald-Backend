@@ -1,5 +1,6 @@
-import * as Yup from 'yup' // Estou pegando tudo ( * ) que da biblioteca yup e chamando de ' Yup '
-import Product from '../models/Product'
+import * as Yup from 'yup'; // Estou pegando tudo ( * ) que da biblioteca yup e chamando de ' Yup '
+import Product from '../models/Product';
+import Category from '../models/Category';
 
 class ProductController {
     // Criando os produtos
@@ -7,7 +8,7 @@ class ProductController {
         const schema = Yup.object({
             name: Yup.string().required(),
             price: Yup.string().required(),
-            category: Yup.string().required(),
+            category_id: Yup.number().required(),
         })
 
         // Aqui iremos mandar um erro, caso tenha algo errado
@@ -19,22 +20,31 @@ class ProductController {
 
         // Pegando os dados
         const { filename: path } = req.file;
-        const { name, price, category } = req.body;
+        const { name, price, category_id } = req.body;
 
         // Criando no banco de dados o Produto
         const product = await Product.create({
             name,
             price,
-            category,
+            category_id,
             path
         })
 
         return res.status(201).json(product)
     }
 
-    // Listar todos os produtos
+    // Listar todos os produtos, e avisando sobre a referência entre a tabela de categoria
     async index(req, res) {
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            // Referência da Categoria
+            include: [
+                {
+                    model: Category,
+                    as: 'category',
+                    attributes: ['id', 'name']
+                }
+            ]
+        });
 
         return res.json(products)
     }

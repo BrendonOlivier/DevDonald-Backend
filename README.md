@@ -297,4 +297,18 @@ Então vamos crirar um Hash de senha.
 - Vamos iniciar essa conexão de relacionamento no nosso 
     'database' + 'index.js'
 
-# 
+# 24º - Alterando Controller de produtos
+- Fazendo a alteração no código, de 'category' para 'category_id'
+
+- E vamos testar no HTTPIE
+    para testar criamos um produto novo colocando a referência, exemplo:
+        criar 'Coka cola' colocando o 'category_id' e o 'id' da categoria no caso '2'
+
+- E quando a gente for listar todos os produtos, precisamos de todas as informações do relacionamento entre as tabelas
+    no caso saber da onde se trata aquela categoria (Bebidas) e não só o número da categoria '2'
+    
+- Para isso vamos no 'ProductController' por essa referência :
+    include: [ { model: Category, as: 'category', attributes: ['id', 'name'] }]
+        desse jeito vamos ter a qual Categoria é daquele produto.
+
+# 25º - 
