@@ -343,4 +343,16 @@ Então vamos crirar um Hash de senha.
 
 - E configuramos...
 
-#
+# 27º - Controller de pedidos (Order)
+- Criar nosso arquivo 
+    'OrderController.js'
+
+- Criar nossa rota de pedidos
+    routes.post('/orders', OrderController.store)
+
+- No HTTPIE igual fizemos com a variavel de rota ( {{BASE_URL}} ) podemos fazer tambem com o token
+    pra cada vez que eu fizer um novo login e criar outro token, eu atualizo em todas chamadas automático
+
+- E testamos a chamada na nossa rota pra ver se vem o name.
+
+- Com tudo funcionando, vamos configurar no nosso controller de order para buscar os dados do Banco de dados
