@@ -418,4 +418,33 @@ Então vamos crirar um Hash de senha.
 - E por fim testamos no nosso HTTPIE passando o ID do produto que queremos alterar, exemplo:
     {{BASE_URL}}/products/1
 
-#
+# 32º - Update de Categorias
+- Quero por imagens nas Categorias, então vamos adicionar um campo de 'path' na nossa tabela de Categorias com a Migrate
+    yarn sequelize migration:create --name add-path-column
+
+- E depois rodamos a migrate :
+    yarn sequelize db:migrate
+
+- Adicionar a configuração no nosso Model de Categorias
+    path: Sequelize.STRING
+    url: { type: Sequelize.VIRTUAL, get() { return ...url igual a dos produtos } }
+
+- Agora alterar nosso Controller de Categorias
+
+- Depois definir algumas o uso de imagem nas nossas Rotas
+    routes.post('/categories', upload.single('file'), CategoryController.store)
+
+- E tambem no nosso 'database' + 'app.js' avisar do uso de imagens :
+    this.app.use('/category-file', express.static(resolve(__dirname, '..', 'uploads')))
+
+- Para testarmos no HTTPIE, alteramos a criação de Categorias mandando uma imagem pelo 'Form', exemplo :
+    TIPO            VALOR
+    name            Combos
+    file            (qualquer imagem)
+    
+- Criamos agora o método Update (PUT) no nosso 'CategoryController'
+
+- Criamos nossa rota (PUT) de update de categoria
+    routes.put('/categories/:id', upload.single('file'), CategoryController.update)
+
+- E por fim vamos testar a rota no HTTPIE
