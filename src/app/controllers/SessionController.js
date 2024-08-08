@@ -13,7 +13,7 @@ class SessionController {
         const isValid = await schema.isValid(req.body)
 
         const userEmailOrPasswordIncorrect = () => {
-            res.status(400).json({ error: 'Make sure password or email are correct' })
+            res.status(400).json({ error: 'Algo deu errado, verifique Email ou Senha se estão corretos 🛑' })
         }
 
         if (!isValid) {

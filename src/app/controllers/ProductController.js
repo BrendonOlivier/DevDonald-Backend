@@ -22,7 +22,7 @@ class ProductController {
 
         // Verificação se o usuário é um Admin, procurando pelo ID do usuário
         const { admin: isAdmin } = await User.findByPk(req.userId)
-        if(!isAdmin) {
+        if (!isAdmin) {
             return res.status(401).json();
         };
 
@@ -60,20 +60,20 @@ class ProductController {
 
         // Verificação se o usuário é um Admin, procurando pelo ID do usuário
         const { admin: isAdmin } = await User.findByPk(req.userId)
-        if(!isAdmin) {
+        if (!isAdmin) {
             return res.status(401).json();
         }
 
         // Verificação se o ID do produto existe para atualizarmos baseado no ID
         const { id } = req.params;
         const findProduct = await Product.findByPk(id)
-        if(!findProduct) {
-            return res.status(400).json({ error: 'Verifique se ID do produto está correto 🛑'})
+        if (!findProduct) {
+            return res.status(400).json({ error: 'Verifique se ID do produto está correto 🛑' })
         }
 
         // Deixando a variável 'path' opcional
         let path;
-        if(req.file) {
+        if (req.file) {
             path = req.file.filename
         }
 
@@ -95,6 +95,31 @@ class ProductController {
 
         return res.status(200).json();
     };
+
+    // Método Delete para remover os Produtos  
+    async delete(req, res) {
+        // Verificação se o usuário é um Admin, procurando pelo ID do usuário  
+        const { admin: isAdmin } = await User.findByPk(req.userId);
+        if (!isAdmin) {
+            return res.status(401).json({ error: 'Acesso não autorizado' });
+        }
+
+        // Verificação se o ID do produto existe para deletarmos baseado no ID  
+        const { id } = req.params;
+        const findProduct = await Product.findByPk(id);
+        if (!findProduct) {
+            return res.status(404).json({ error: 'Produto não encontrado 🛑' });
+        }
+
+        // Realizando a exclusão do produto  
+        await Product.destroy({
+            where: {
+                id
+            }
+        });
+
+        return res.status(204).json({ message: 'Produto deletado com sucesso ✅'}); // No Content  
+    }
 
 
     // Listar todos os produtos, e avisando sobre a referência entre a tabela de categoria

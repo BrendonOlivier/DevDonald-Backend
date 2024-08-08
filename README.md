@@ -448,3 +448,9 @@ Então vamos crirar um Hash de senha.
     routes.put('/categories/:id', upload.single('file'), CategoryController.update)
 
 - E por fim vamos testar a rota no HTTPIE
+
+# 33º - Deletando Produtos
+- No meu controller de produtos 'ProductController.js' crio um estado de 'delete' e configuro
+
+- Depois só criar a rota
+    routes.delete('/products/:id', authMiddleware, ProductController.delete)
